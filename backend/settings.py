@@ -19,8 +19,8 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://rectify-ebon.vercel.app',
-    'https://rectify-ebon.vercel.app/'
+    'https://rectify-frontend.vercel.app',
+    'https://rectify-frontend.vercel.app/'
 ]
 
 
