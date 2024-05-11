@@ -20,7 +20,9 @@ ALLOWED_HOSTS = [
 
 CORS_ALLOWED_ORIGINS = [
     'https://rectify-frontend.vercel.app',
-    'https://rectify-frontend.vercel.app/'
+    'https://rectify-frontend.vercel.app/',
+    'http://localhost:3000',
+    'http://localhost:3000/',
 ]
 
 
@@ -72,6 +74,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 #Cache
+'''
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
@@ -80,6 +83,7 @@ CACHES = {
 }
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALIAS = 'default'
+'''
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
