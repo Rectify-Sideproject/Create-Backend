@@ -186,6 +186,9 @@ class CreatePlaylistOnSpotify(APIView):
         # We need playlists ID for adding songs to playlist.
         playlist_id = create_playlist['id'] # Based on what was show in the Response when testing for create_playlist
 
+        # FEATURE ENHANCEMENT: MAKE SURE ADDED SONGS ISNT IN PLAYLIST ACCORDING TO ID --- LATER REQUEST ---
+
+
         tracks_id = []
 
         for id in range(len(tracks)):
@@ -207,3 +210,4 @@ class CreatePlaylistOnSpotify(APIView):
             },
             status=status.HTTP_201_CREATED
         )
+    
