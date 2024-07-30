@@ -167,7 +167,6 @@ class CreatePlaylistOnSpotify(APIView):
     def post(self, request, format=None, *args, **kwargs):
         #{Daniel's} addition of adding playlist feature.
         #Simply create a new playlist and add tracks to that playlist's ID
-        token = request.data['token']
         tracks = request.data['tracks']
         user_id = request.data['id']
         scope='playlist-modify-public'
@@ -195,7 +194,7 @@ class CreatePlaylistOnSpotify(APIView):
 
 
         try:
-            add_tracks = sp.user_playlist_add_tracks(user_id, playlist_id=playlist_id, tracks=tracks_id) #Line to add songs to the playlist
+            sp.user_playlist_add_tracks(user_id, playlist_id=playlist_id, tracks=tracks_id) #Line to add songs to the playlist
         except:
             return Response(
                 {
