@@ -165,4 +165,48 @@ class CreatePlaylist(APIView):
         
 class CreatePlaylistOnSpotify(APIView):
     def post(self, request, format=None, *args, **kwargs):
-        pass
+        #{Daniel's} addition of adding playlist feature.
+        #Simply create a new playlist and add tracks to that playlist's ID
+        token = request.data['token']
+        tracks = request.data['tracks']
+        user_id = request.data['id']
+        scope='playlist-modify-public'
+        sp = spotifyconnect(scope=scope)
+
+        #Get first word in song title
+        song_title = request.data['song_title']
+        song = song_title.split(' ')[0]
+
+        playlist_name = f"Rectify playlist from {song}"
+        desc = f"Playlist created from rectify for the song {song}"
+
+        create_playlist = sp.user_playlist_create(user_id, name=playlist_name, public=True,collaborative=True, description=desc)
+
+        # We need playlists ID for adding songs to playlist.
+        playlist_id = create_playlist['id'] # Based on what was show in the Response when testing for create_playlist
+
+        # FEATURE ENHANCEMENT: MAKE SURE ADDED SONGS ISNT IN PLAYLIST ACCORDING TO ID --- LATER REQUEST ---
+
+
+        tracks_id = []
+
+        for id in range(len(tracks)):
+            tracks_id.append(tracks[id]['track_id'])
+
+
+        try:
+            add_tracks = sp.user_playlist_add_tracks(user_id, playlist_id=playlist_id, tracks=tracks_id) #Line to add songs to the playlist
+        except:
+            return Response(
+                {
+                    "Error": "An error occurred"
+                },
+                status=status.HTTP_406_NOT_ACCEPTABLE
+            )
+        return Response(
+            {
+                "Playlist": "Added songs to playlist"
+            },
+            status=status.HTTP_201_CREATED
+        )
+    
