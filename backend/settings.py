@@ -11,19 +11,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 #You can add your allowed host here but keep secret
 ALLOWED_HOSTS = [
-    os.getenv('ALLOWED_HOST')
+    '127.0.0.1',
+    #os.getenv('ALLOWED_HOST')
 ]
 
-CORS_ALLOWED_ORIGINS = [
+'''CORS_ALLOWED_ORIGINS = [
     'https://rectify-frontend.vercel.app',
     'https://rectify-frontend.vercel.app/',
     'http://localhost:3000',
-    'http://localhost:3000/',
-]
+    'http://localhost:3000/',  
+]'''
+
+
+#CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
