@@ -5,4 +5,5 @@ urlpatterns = [
     path('search/', SearchSong.as_view(), name='spotify_search'),
     path('getcurrentsong/', GetCurrentSong.as_view(), name='getcurrentsong'),
     path('createplaylist/', CreatePlaylist.as_view(), name='createplaylist'),
+    path('addplaylist/', CreatePlaylistOnSpotify.as_view(), name='addplaylist'),
 ]
